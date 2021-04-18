@@ -1,0 +1,6 @@
+hikari:
+   hikariConfig.setJdbcUrl : "jdbc:mysql://localhost:3306/paymentDB?autoReconnect=true&useSSL=false"
+   hikariConfig.setUsername : "root"
+   hikariConfig.setPassword : "password"
+   hikariConfig.minimumIdle : "5"
+   hikariConfig.maximumPoolSize : "25"
