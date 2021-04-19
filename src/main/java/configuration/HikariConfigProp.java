@@ -14,6 +14,11 @@ public class HikariConfigProp extends SystemConfigProp{
 	private static final String HIKARI_CONFIG_PASSWORD = "hikariConfig.setPassword";
 	private static final String HIKARI_MINIMUMUM_IDLE_TIME = "hikariConfig.minimumIdle";
 	private static final String HIKARI_MAXIMUM_POOL_SIZE = "hikariConfig.maximumPoolSize";
+	private static final String SECRET_KEY_FACTORY = "secretKeyFactory.getInstance"; 
+	private static final String CIPHER_GETINSTANCE = "cipher.getInstance";
+	private static final String SECRET_KEY_SPEC = "secretKeySpec";
+	private static final String ADITIONAL_KEY = "aes256.aditionalKey";
+	private static final String SECRET_KEY = "aes256.secretKey";
 
 	public HikariConfigProp() throws Exception {
 		super("");
@@ -24,6 +29,7 @@ public class HikariConfigProp extends SystemConfigProp{
 			try(final FileInputStream yamlStream=new FileInputStream(hikariConfigFile); ){
 				final JsonNode jsonNode = yamlReader.readTree(yamlStream);
 				parseConfigJson(jsonNode.findValue("hikari"), "");
+				parseConfigJson(jsonNode.findValue("AES256Decryption"), "");
 			} catch(IOException ex) {
 				throw new RuntimeException("Error loading yaml file", ex);
 			}
@@ -52,5 +58,25 @@ public class HikariConfigProp extends SystemConfigProp{
 	public String getHikariMaximumPoolSize() {
 		return getProperty(HIKARI_MAXIMUM_POOL_SIZE);
 	}
+	
+	public String getSecretKeyFactory() {
+		return getProperty(SECRET_KEY_FACTORY);
+	}
+	
+	public String getCiperGetInstance() {
+		return getProperty(CIPHER_GETINSTANCE);
+	}
+	
+	public String getSecretKeySpec() {
+		return getProperty(SECRET_KEY_SPEC);
+	}
+	
+	public String getAditionalKey() {
+		return getProperty(ADITIONAL_KEY);
+	}
 
+	public String getSecretKey() {
+		return getProperty(SECRET_KEY);
+	}
+	
 }

@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import configuration.HikariConfigProp;
+import utility.cryptography.DecryptionAES256;
 
 public class HikariDataPool   {
 
@@ -19,7 +20,7 @@ public class HikariDataPool   {
 
 		config.setJdbcUrl(hikariConfigObject.getHikariConfigJdbcurl());
 		config.setUsername(hikariConfigObject.getHikariConfigUserName());
-		config.setPassword(hikariConfigObject.getHikariConfigPassword());
+		config.setPassword(DecryptionAES256.decrypt(hikariConfigObject.getHikariConfigPassword(), hikariConfigObject.getSecretKey()));
 		config.addDataSourceProperty("minimumIdle", hikariConfigObject.getHikariMinimumumIdleTime());
 		config.addDataSourceProperty("maximumPoolSize", hikariConfigObject.getHikariMaximumPoolSize());
 

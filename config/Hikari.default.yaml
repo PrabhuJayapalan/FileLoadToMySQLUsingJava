@@ -1,6 +1,12 @@
 hikari:
    hikariConfig.setJdbcUrl : "jdbc:mysql://localhost:3306/paymentDB?autoReconnect=true&useSSL=false"
    hikariConfig.setUsername : "root"
-   hikariConfig.setPassword : "password"
+   hikariConfig.setPassword : "SywjTRyQnowP/y1YN4/MOQ=="
    hikariConfig.minimumIdle : "5"
    hikariConfig.maximumPoolSize : "25"
+AES256Decryption:
+   secretKeyFactory.getInstance : "PBKDF2WithHmacSHA256"
+   cipher.getInstance : "AES/CBC/PKCS5PADDING"
+   secretKeySpec : "AES"
+   aes256.aditionalKey : "ssshhhhhhhhhhh!!!!"
+   aes256.secretKey : "boooooooooom!!!!"
